@@ -332,6 +332,18 @@
         clip-path: none;
       }
 
+      .smooth-toggle {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+      }
+
+      .smooth-toggle.open {
+        max-height: 2000px; /* large enough */
+        opacity: 1;
+      }
+
       @media (min-width: 1024px) {
         /* lg breakpoint */
         .clip-container {
@@ -909,7 +921,7 @@
 
     <!--- hero section --->
     <section
-      class="relative h-[504px] flex items-center md:items-end py-4 md:py-8 lg:py-16 px-8 text-center"
+      class="relative h-[250px] sm:h-[450px] lg:h-[504px] flex items-center md:items-end py-4 md:py-8 lg:py-16 px-8 text-center"
     >
       <!-- Blurred background -->
       <div
@@ -919,7 +931,9 @@
       <!-- Overlay to darken a bit for better readability -->
       <div class="absolute inset-0 bg-black/50"></div>
 
-      <div class="flex flex-col gap-2 items-start z-10 md:px-12">
+      <div
+        class="w-full h-full flex flex-col gap-2 justify-center items-center lg:items-start z-10 md:px-12"
+      >
         <a
           href="universitypathway.html"
           class="text-[var(--secondary-color)] font-bold hover:text-white z-10"
