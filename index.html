@@ -332,6 +332,21 @@
         clip-path: none;
       }
 
+      @keyframes popup {
+        0% {
+          transform: scale(0.92) translateY(10px);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .animate-popup {
+        animation: popup 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
       @media (min-width: 1024px) {
         /* lg breakpoint */
         .clip-container {
@@ -353,6 +368,80 @@
     </style>
   </head>
   <body>
+    <!-- Promo Popup -->
+    <section
+      id="promoPopup"
+      class="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-md hidden"
+    >
+      <div
+        class="relative w-[92%] max-w-[960px] h-[80%] sm:h-[440px] lg:h-[520px] bg-[url('images/add.jpg')] bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center text-center rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden animate-popup"
+      >
+        <!-- Dark overlay -->
+        <div class="absolute inset-0 bg-black/10"></div>
+
+        <!-- Content -->
+        <div class="relative z-10 px-4 sm:px-8 max-w-3xl">
+          <h2
+            class="text-2xl sm:text-3xl lg:text-6xl font-extrabold text-white leading-tight drop-shadow-lg"
+          >
+            Study Abroad
+          </h2>
+
+          <h4
+            class="mt-2 text-base sm:text-xl lg:text-3xl font-semibold text-gray-200 drop-shadow-lg"
+          >
+            For International Students
+          </h4>
+
+          <ul
+            class="mt-4 sm:mt-6 space-y-2 text-left mx-auto max-w-md text-gray-100"
+          >
+            <li class="flex items-start gap-2">
+              <span class="text-[var(--secondary-color)] mt-1 drop-shadow-lg"
+                >✔</span
+              >
+              <span class="font-medium drop-shadow-lg"
+                >Popular Courses for Students</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[var(--secondary-color)] mt-1 drop-shadow-lg"
+                >✔</span
+              >
+              <span class="font-medium drop-shadow-lg"
+                >Student Visa Requirements at a Glance</span
+              >
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-[var(--secondary-color)] mt-1 drop-shadow-lg"
+                >✔</span
+              >
+              <span class="font-medium drop-shadow-lg"
+                >Top Universities in the UK</span
+              >
+            </li>
+          </ul>
+
+          <!-- CTA -->
+          <a
+            href="/offer"
+            class="inline-block mt-6 sm:mt-8 bg-[var(--secondary-color)] text-white px-8 py-3 rounded-xl font-bold text-lg shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
+          >
+            Unlock Offer
+          </a>
+        </div>
+
+        <!-- Close Button -->
+        <button
+          id="popupClose"
+          class="absolute top-4 right-4 z-20 w-10 h-10 cursor-pointer flex items-center justify-center rounded-full bg-white/20 text-white text-2xl hover:bg-white hover:text-black transition"
+          aria-label="Close popup"
+        >
+          &times;
+        </button>
+      </div>
+    </section>
+
     <header
       id="mainHeader"
       class="lg:fixed top-0 left-0 z-50 transition-all duration-500 ease w-full"
@@ -2126,6 +2215,25 @@
           el.style.transitionDelay = `${index * 20}ms`; // stagger effect
           observer2.observe(el);
         });
+    </script>
+
+    <!-- JavaScript for promo popup -->
+
+    <script>
+      const popup = document.getElementById("promoPopup");
+      const closeBtn = document.getElementById("popupClose");
+
+      // Show popup only if not closed in this session
+      if (!sessionStorage.getItem("promoClosed")) {
+        setTimeout(() => {
+          popup.classList.remove("hidden");
+        }, 800); // slight delay feels premium
+      }
+
+      closeBtn.addEventListener("click", () => {
+        popup.classList.add("hidden");
+        sessionStorage.setItem("promoClosed", "true");
+      });
     </script>
   </body>
 </html>
