@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>NextNets</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #21a6db;
+        --secondary-color: #2084ac;
+        --bg-color: #0b1020;
+        --text-color: #095394;
+        --span-color: #145068;
+      }
+
+      * {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      #mainHeader nav {
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      .header-hide {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      .header-show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      #upper-header {
+        transition: transform 0.5s ease, opacity 0.5s ease;
+      }
+
+      .upper-hide {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      .upper-show {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+
+      .about-title {
+        transform: translateX(-60px);
+      }
+
+      .about-title.show {
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.9s ease, transform 0.9s ease;
+      }
+
+      .swiper-container {
+        overflow: hidden;
+      }
+
+      .slide-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .swiper-slide-active .slide-inner {
+        z-index: 10;
+      }
+
+      .swiper-slide {
+        z-index: 1 !important;
+      }
+      .swiper-slide-active {
+        z-index: 10 !important;
+      }
+
+      .swiper-slide:not(.swiper-slide-active) [data-swiper-parallax] {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .swiper-slide-active [data-swiper-parallax] {
+        opacity: 1;
+      }
+
+      .glassy-bg {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .glassy-link {
+        display: inline-block; /* allow padding/margin */
+        padding: 4px 8px; /* optional */
+        color: #ffffff; /* text color */
+        background: rgba(255, 255, 255, 0.1); /* translucent background */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+      }
+
+      .glassy-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: #fff; /* or primary color if you want */
+        transform: scale(1.05);
+      }
+
+      .card-clip {
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(
+          0% 0%,
+          calc(100% - 24px) 0%,
+          100% 24px,
+          100% 100%,
+          24px 100%,
+          0% calc(100% - 24px)
+        );
+      }
+
+      /* Border layer */
+      .card-clip::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        clip-path: polygon(
+          0% 0%,
+          calc(100% - 24px) 0%,
+          100% 24px,
+          100% 100%,
+          24px 100%,
+          0% calc(100% - 24px)
+        );
+        z-index: 1;
+      }
+
+      /* White inner background layer */
+
+      .card-clip > * {
+        position: relative;
+        z-index: 3;
+      }
+
+      .btn-ani {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        isolation: isolate;
+      }
+
+      .btn-ani span {
+        position: relative;
+        z-index: 10;
+      }
+
+      .btn-ani::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0%;
+        background: var(--span-color);
+        z-index: 1;
+        border-radius: 0.5rem;
+        transition: height 0.45s ease;
+      }
+
+      .btn-ani:hover::before {
+        height: 100%;
+      }
+
+      .text-ani {
+        position: relative;
+      }
+
+      .text-ani::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 2%;
+        left: 0%;
+        width: 0;
+        height: 2px;
+        margin-left: 1rem;
+        background: var(--primary-color);
+        transition: width 0.35s ease;
+      }
+
+      .text-ani:hover::after {
+        width: 100%;
+      }
+
+      .text-ani:hover {
+        color: var(--primary-color);
+      }
+
+      .btn-clip {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        isolation: isolate; /* 🔑 IMPORTANT */
+
+        clip-path: polygon(
+          0% 0%,
+          calc(100% - 16px) 0%,
+          100% 16px,
+          100% 100%,
+          16px 100%,
+          0% calc(100% - 16px)
+        );
+        transition: clip-path 0.35s ease;
+      }
+
+      /* Text */
+      .btn-clip span {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Background fill */
+      .btn-clip::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 0%;
+        background: var(--span-color);
+        z-index: 1;
+
+        clip-path: inherit;
+        transition: height 0.45s ease;
+      }
+
+      /* Hover */
+      .btn-clip:hover::before {
+        height: 100%;
+      }
+
+      .btn-clip:hover {
+        clip-path: polygon(
+          0% 0%,
+          100% 0%,
+          100% 0%,
+          100% 100%,
+          0% 100%,
+          0% 100%
+        );
+      }
+
+      /* Pseudo-element overlay */
+      .bg_overlay::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: var(--secondary-color); /* primary color overlay */
+        border-radius: 50%;
+        transform: rotate(45deg) scale(0);
+        transition: transform 0.6s ease-in-out;
+        z-index: 0;
+      }
+
+      /* On hover, expand pseudo-element to cover card */
+      .bg_overlay:hover::before {
+        transform: rotate(45deg) scale(1.1);
+      }
+
+      /* Ensure text is above pseudo-element */
+      .bg_overlay h4,
+      .bg_overlay p {
+        position: relative;
+        z-index: 10;
+      }
+
+      .swiper-button-next {
+        right: 0%;
+      }
+
+      .swiper-button-prev {
+        left: 0%;
+      }
+
+      /* Add this to your main CSS file */
+      .stick {
+        position: relative;
+      }
+
+      .stick::before {
+        content: "";
+        position: absolute;
+        bottom: -98px; /* how far it extends downward */
+        left: 49%;
+        transform: translateX(-50%);
+        width: 4px; /* stick thickness */
+        height: 100px; /* stick length */
+        background: var(--primary-color);
+        border-radius: 999px;
+      }
+
+      .clip-container {
+        background: transparent;
+        border: 1px solid white;
+        clip-path: none;
+      }
+
+      @media (min-width: 1024px) {
+        /* lg breakpoint */
+        .clip-container {
+          clip-path: polygon(
+            0% 0%,
+            calc(100% - 24px) 0%,
+            100% 24px,
+            100% 100%,
+            24px 100%,
+            0% calc(100% - 24px)
+          );
+          border: 1px solid white;
+        }
+
+        .margin {
+          margin-top: -48px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header
+      id="mainHeader"
+      class="lg:fixed top-0 left-0 z-50 transition-all duration-500 ease w-full"
+    >
+      <div
+        id="upper-header"
+        class="hidden xl:flex justify-between items-center py-1 bg-[var(--primary-color)] mx-auto w-full px-2 sm:px-6 lg:px-8"
+      >
+        <div class="">
+          <a href=""
+            ><i
+              class="fa-brands fa-square-facebook text-[20px] text-white hover:text-blue-700 transition-all duration-200"
+            ></i
+          ></a>
+          <a href=""
+            ><i
+              class="fa-brands fa-square-linkedin text-[20px] text-white hover:text-blue-700 transition-all duration-200"
+            ></i
+          ></a>
+          <a href=""
+            ><i
+              class="fa-brands fa-square-x-twitter text-[20px] text-white hover:text-blue-700 transition-all duration-200"
+            ></i
+          ></a>
+          <a href=""
+            ><i
+              class="fa-brands fa-square-instagram text-[20px] text-white hover:text-blue-700 transition-all duration-200"
+            ></i
+          ></a>
+          <a href=""
+            ><i
+              class="fa-brands fa-square-youtube text-[20px] text-white hover:text-blue-700 transition-all duration-200"
+            ></i
+          ></a>
+        </div>
+        <div>
+          <button
+            class="px-8 py-2 cursor-pointer text-white rounded-full text-[15px] font-bold bg-[var(--secondary-color)] hover:bg-[var(--secondary-color)]/50 transition-all duration-300"
+          >
+            Find Destination
+          </button>
+          <button
+            class="px-8 py-2 btn-ani cursor-pointer rounded-[0.5rem] ml-4 text-[15px] font-bold bg-white group transition-all duration-300"
+          >
+            <span class="text-black group-hover:text-white"
+              >Book An Appointment</span
+            >
+          </button>
+        </div>
+      </div>
+
+      <!--- desktop header --->
+      <nav class="relative w-full bg-transparent">
+        <!-- Overlay to darken a bit for better readability -->
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div
+          class="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/30 via-white/10 to-white/30 opacity-70"
+        ></div>
+        <div
+          class="mx-auto w-full px-2 sm:px-6 xl:px-8 flex justify-between items-center"
+        >
+          <div class="relative flex w-full items-center justify-between">
+            <!-- Logo -->
+            <a
+              href="index.html"
+              class="flex shrink-0 items-center w-[120px] py-4 cursor-pointer"
+            >
+              <img
+                src="images/nextnetslogo.png"
+                alt="NextNets"
+                class="w-full"
+              />
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="xl:hidden text-3xl text-white">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="hidden xl:block">
+              <div
+                class="flex space-x-4 items-center text-[15px] uppercase font-bold"
+              >
+                <a
+                  href="aboutus.html"
+                  class="transition-all duration-300 ease-in glassy-link"
+                  >About Us</a
+                >
+
+                <!-- Study Destination -->
+                <div class="group relative">
+                  <a
+                    href="studyDestination.html"
+                    class="flex items-center cursor-pointer glassy-link gap-1 transition"
+                  >
+                    Study Destination
+                    <i class="fa-solid fa-angle-down text-sm"></i>
+                  </a>
+
+                  <div
+                    class="absolute left-0 top-full z-50 px-2 py-2 w-[17rem] glassy-bg lg:[clip-path:polygon(90%_0,100%_5%,100%_100%,10%_100%,0_95%,0_0)] shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-y-0 origin-top group-hover:scale-y-100"
+                  >
+                    <!-- Overlay to darken a bit for better readability -->
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <ul class="py-2 text-[14px] font-bold text-white">
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In UK
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In USA
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In CYPRUS
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In SPAIN
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In MALTA
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In CANADA
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In AUSTRALIA
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In MALAYSIA
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="study.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                        >
+                          Study In DENMARK
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- English Test -->
+                <div class="group relative">
+                  <a
+                    href="englishtest.html"
+                    class="flex items-center cursor-pointer glassy-link gap-1 transition"
+                  >
+                    English Test <i class="fa-solid fa-angle-down text-sm"></i>
+                  </a>
+
+                  <div
+                    class="absolute left-0 top-full z-50 px-2 w-[17rem] glassy-bg lg:[clip-path:polygon(90%_0,100%_5%,100%_100%,10%_100%,0_95%,0_0)] shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-y-0 origin-top group-hover:scale-y-100"
+                  >
+                    <!-- Overlay to darken a bit for better readability -->
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <ul class="py-2 text-[14px] text-white uppercase font-bold">
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >IELTS</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >TOEFL</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >PTE</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Duolingo</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Cambridge</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Password</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Michigan</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >ITEP</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Anglia</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="englishtest.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >SAT</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- University Pathways -->
+                <div class="group relative">
+                  <a
+                    href="universitypathway.html"
+                    class="flex items-center cursor-pointer glassy-link gap-1 transition"
+                  >
+                    University Pathways
+                    <i class="fa-solid fa-angle-down text-sm"></i>
+                  </a>
+
+                  <div
+                    class="absolute left-0 top-full z-50 px-2 w-[17rem] glassy-bg lg:[clip-path:polygon(90%_0,100%_5%,100%_100%,10%_100%,0_95%,0_0)] shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-y-0 origin-top group-hover:scale-y-100"
+                  >
+                    <!-- Overlay to darken a bit for better readability -->
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <ul class="py-2 text-[14px] uppercase font-bold text-white">
+                      <li>
+                        <a
+                          href="ourcampus.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Our Campus</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="ourcampus.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Student Services</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Success Stories -->
+                <div class="group relative">
+                  <a
+                    href="successstories.html"
+                    class="flex items-center cursor-pointer glassy-link gap-1 transition"
+                  >
+                    Success Stories
+                    <i class="fa-solid fa-angle-down text-sm"></i>
+                  </a>
+
+                  <div
+                    class="absolute left-0 top-full z-50 px-2 w-[17rem] glassy-bg lg:[clip-path:polygon(90%_0,100%_5%,100%_100%,10%_100%,0_95%,0_0)] shadow-lg rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform scale-y-0 origin-top group-hover:scale-y-100"
+                  >
+                    <!-- Overlay to darken a bit for better readability -->
+                    <div class="absolute inset-0 bg-black/50"></div>
+                    <ul class="py-2 text-[14px] uppercase font-bold text-white">
+                      <li>
+                        <a
+                          href="visasuccess.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Visa Success</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="ourstudents.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Our Students</a
+                        >
+                      </li>
+                      <li>
+                        <a
+                          href="ourstudents.html"
+                          class="block text-ani w-fit pl-4 py-2 my-1 cursor-pointer"
+                          >Our Events</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!-- Contact -->
+                <a
+                  href="contact.html"
+                  class="cursor-pointer glassy-link transition"
+                  >Contact</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <!-- Mobile Menu -->
+        <div
+          id="mobileMenu"
+          class="xl:hidden glassy-bg shadow-lg w-full hidden"
+        >
+          <ul
+            class="flex flex-col py-4 px-4 space-y-3 text-[17px] text-white font-semibold"
+          >
+            <li>
+              <a
+                href="aboutus.html"
+                class="hover:text-blue-700 transition-all duration-300 ease-in"
+                >About Us</a
+              >
+            </li>
+
+            <!-- Study Destination -->
+            <li class="mobile-dropdown">
+              <button
+                class="flex justify-between w-full hover:text-blue-700 transition-all duration-300 ease-in"
+              >
+                Study Destination <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul
+                class="hidden space-y-2 py-2 text-[16px] bg-transparent text-white"
+              >
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In UK</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In USA</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In CYPRUS</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In SPAIN</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In MALTA</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In CANADA</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In AUSTRALIA</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In MALAYSIA</a
+                  >
+                </li>
+                <li class="pl-4">
+                  <a href="study.html" class="hover:text-blue-900"
+                    >Study In DENMARK</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- English Test -->
+            <li class="mobile-dropdown">
+              <button
+                class="flex justify-between w-full hover:text-blue-700 transition-all duration-300 ease-in"
+              >
+                English Test <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul
+                class="hidden space-y-2 py-2 bg-transparent text-white text-[16px]"
+              >
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >IELTS</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >TOEFL</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900">PTE</a>
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >Doulingo</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >Cambridge</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >Password</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >Michigan</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >ITEP</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900"
+                    >Anglia</a
+                  >
+                </li>
+                <li class="pl-4">
+                  <a href="englishtest.html" class="hover:text-blue-900">SAT</a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- University Pathways -->
+            <li class="mobile-dropdown">
+              <button
+                class="flex justify-between w-full hover:text-blue-700 transition-all duration-300 ease-in"
+              >
+                University Pathways <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul
+                class="hidden space-y-2 py-2 bg-transparent text-white text-[16px]"
+              >
+                <li class="border-b border-white pl-4">
+                  <a href="ourcampus.html" class="hover:text-blue-900"
+                    >Our Campus</a
+                  >
+                </li>
+                <li class="pl-4">
+                  <a href="ourcampus.html" class="hover:text-blue-900"
+                    >Student Services</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <!-- ✅ Success Stories (ADDED) -->
+            <li class="mobile-dropdown">
+              <button
+                class="flex justify-between w-full hover:text-blue-700 transition-all duration-300 ease-in"
+              >
+                Success Stories <i class="fa-solid fa-angle-down"></i>
+              </button>
+              <ul
+                class="hidden space-y-2 py-2 bg-transparent text-white text-[16px]"
+              >
+                <li class="border-b border-white pl-4">
+                  <a href="visasuccess.html" class="hover:text-blue-900"
+                    >Visa Success</a
+                  >
+                </li>
+                <li class="border-b border-white pl-4">
+                  <a href="ourstudents.html" class="hover:text-blue-900"
+                    >Our Students</a
+                  >
+                </li>
+                <li class="pl-4">
+                  <a href="ourstudents.html" class="hover:text-blue-900"
+                    >Our Events</a
+                  >
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <a
+                href="contact.html"
+                class="hover:text-blue-700 transition-all duration-300 ease-in"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!--- hero section --->
+    <section
+      class="relative h-[504px] flex items-center md:items-end py-4 md:py-8 lg:py-16 px-8 text-center"
+    >
+      <!-- Blurred background -->
+      <div
+        class="absolute inset-0 bg-[url('images/study-australia-01[Recovered]-01(2).jpeg')] bg-cover bg-center bg-no-repeat filter"
+      ></div>
+
+      <!-- Overlay to darken a bit for better readability -->
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <div class="flex flex-col gap-2 items-start z-10 md:px-12">
+        <a
+          href="successstories.html"
+          class="text-[var(--secondary-color)] font-bold hover:text-white z-10"
+          ><i class="fa-solid fa-angle-left"></i>Our Students</a
+        >
+
+        <!-- Heading -->
+        <h2
+          class="about-title opacity-0 relative text-[40px] sm:text-[50px] md:text-[65px] font-bold text-white z-10"
+        >
+          OUR STUDENTS
+        </h2>
+      </div>
+    </section>
+    <!--- end hero section --->
+
+    <!--- success card section --->
+    <section class="py-4 md:py-8 lg:py-16 px-2 text-center bg-white text-black">
+      <div
+        class="lg:px-[1rem] 2xl:px-[3rem] container mx-auto flex-col flex gap-10 items-center"
+      >
+        <div>
+          <div class="flex flex-wrap gap-10 py-3 px-2 justify-center">
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-01.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-02.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-03.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-03.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-04.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-01.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-02.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-03.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+            <div
+              class="w-full md:w-[340px] clip-container transition-transform transform scale-0 opacity-0 duration-500"
+            >
+              <img
+                src="images/event-04.jpg"
+                alt="visa"
+                class="w-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--- end success card section --->
+
+    <!--- footer section --->
+    <section
+      class="text-start pb-4 md:pb-8 lg:pb-16 pt-4 md:pt-12 lg:pt-20 px-8 md:px-6 bg-gradient-to-r from-gray-700 to-[var(--secondary-color)] text-white grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10"
+    >
+      <!-- Logo and Social -->
+      <div class="flex flex-col items-start gap-4">
+        <div class="w-[200px]">
+          <img src="images/nextnetslogo.png" alt="logo" class="w-full" />
+        </div>
+        <div class="flex gap-4 mt-2">
+          <a href="#"
+            ><i
+              class="fa-brands fa-square-facebook text-[30px] text-white hover:text-blue-300 transition-all duration-200"
+            ></i
+          ></a>
+          <a href="#"
+            ><i
+              class="fa-brands fa-square-linkedin text-[30px] text-white hover:text-blue-300 transition-all duration-200"
+            ></i
+          ></a>
+          <a href="#"
+            ><i
+              class="fa-brands fa-square-x-twitter text-[30px] text-white hover:text-blue-300 transition-all duration-200"
+            ></i
+          ></a>
+          <a href="#"
+            ><i
+              class="fa-brands fa-square-instagram text-[30px] text-white hover:text-blue-300 transition-all duration-200"
+            ></i
+          ></a>
+          <a href="#"
+            ><i
+              class="fa-brands fa-square-youtube text-[30px] text-white hover:text-blue-300 transition-all duration-200"
+            ></i
+          ></a>
+        </div>
+      </div>
+
+      <!-- Contact Us -->
+      <div class="flex flex-col items-start gap-4">
+        <h5 class="text-[25px] font-bold">CONTACT US</h5>
+        <span class="flex gap-4 items-center text-white">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Plot 57, Road 13, Sector 10, Uttara Model Town, Dhaka</span>
+        </span>
+        <div class="flex flex-col gap-2 items-start">
+          <span><i class="fa-solid fa-phone mr-2"></i>+8801800099339</span>
+          <!-- <span><i class="fa-solid fa-phone mr-2"></i>+8801894935767</span> -->
+          <span
+            ><i class="fa-solid fa-envelope mr-3"></i>info@nextnestbd.com</span
+          >
+          <a
+            href="contact.html"
+            class="cursor-pointer hover:underline hover:underline-offset-4 transition-all duration-300"
+          >
+            <i class="fa-solid fa-arrows-turn-right mr-2"></i>Contact Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Link -->
+      <div class="flex flex-col items-start gap-4">
+        <h5 class="text-[25px] font-bold">QUICK LINK</h5>
+        <div class="flex flex-col gap-2 items-start">
+          <a
+            href="aboutus.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >About Us</a
+          >
+          <a
+            href="englishtest.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >English Test</a
+          >
+          <a
+            href="ourstudents.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Our Event</a
+          >
+          <a
+            href="visasuccess.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Visa Success</a
+          >
+          <a
+            href="successstories.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Success Stories</a
+          >
+          <a
+            href="studyDestination.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study Destination</a
+          >
+          <a
+            href="universitypathway.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >University Pathway</a
+          >
+        </div>
+      </div>
+
+      <!-- Study Destinations -->
+      <div class="flex flex-col items-start gap-4">
+        <div class="flex flex-col gap-2 items-start">
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In UK</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In USA</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Cyprus</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Spain</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Malta</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Canada</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Australia</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Malaysia</a
+          >
+          <a
+            href="study.html"
+            class="hover:underline hover:underline-offset-4 transition-all duration-300 cursor-pointer"
+            >Study In Denmark</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!--- end footer section --->
+
+    <!-- Back to Top Button -->
+    <button
+      id="backToTop"
+      class="hidden fixed bottom-6 right-6 bg-[#3498DB] text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-[#6CC5FF] hover:shadow-xl cursor-pointer z-50"
+    >
+      ↑
+    </button>
+
+    <script>
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      document.querySelectorAll(".mobile-dropdown").forEach((item) => {
+        const btn = item.querySelector("button");
+        const submenu = item.querySelector("ul");
+
+        btn.addEventListener("click", () => {
+          submenu.classList.toggle("hidden");
+        });
+      });
+    </script>
+
+    <!-- JavaScript for header -->
+
+    <script>
+      let lastScroll = 0;
+      const header = document.getElementById("mainHeader");
+      const upperHeader = document.getElementById("upper-header");
+      const nav = header.querySelector("nav");
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        const pageWidth = window.innerWidth;
+
+        if (currentScroll > lastScroll && currentScroll > 300) {
+          // Scrolling Down → Hide Header
+          upperHeader.classList.add("upper-hide");
+          header.classList.add("header-hide");
+          header.classList.remove("header-show");
+        } else {
+          upperHeader.classList.add("upper-hide");
+          header.classList.add("header-show");
+          if (pageWidth >= 1280) {
+            nav.classList.add("margin");
+          }
+
+          header.classList.remove("header-hide");
+        }
+
+        if (currentScroll === 0) {
+          upperHeader.classList.add("upper-show");
+          nav.classList.remove("margin");
+        } else {
+          upperHeader.classList.remove("upper-show");
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
+
+    <!-- JavaScript for hero -->
+
+    <script>
+      window.addEventListener("load", () => {
+        document.querySelector(".about-title").classList.add("show");
+      });
+    </script>
+
+    <!-- JavaScript for back to top -->
+
+    <script>
+      const backToTopBtn = document.getElementById("backToTop");
+
+      window.addEventListener("scroll", () => {
+        const scrollPos = window.scrollY;
+        const docHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+
+        // Show when user scrolls 80%
+        if (scrollPos > docHeight * 0.2) {
+          backToTopBtn.classList.remove("hidden");
+          backToTopBtn.classList.add("flex");
+        } else {
+          backToTopBtn.classList.add("hidden");
+          backToTopBtn.classList.remove("flex");
+        }
+      });
+
+      // Smooth scroll to top
+      backToTopBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+
+    <!-- JavaScript for card -->
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove(
+                "translate-y-10",
+                "opacity-0",
+                "scale-0"
+              );
+              entry.target.classList.add(
+                "translate-y-0",
+                "opacity-100",
+                "scale-100"
+              );
+            }
+          });
+        },
+        {
+          threshold: 0.1, // Trigger when 30% of the element is visible
+        }
+      );
+
+      // Animate headings
+      document.querySelectorAll("h2, h3").forEach((el) => observer.observe(el));
+
+      // Animate cards
+      document.querySelectorAll(".flex > div").forEach((el, index) => {
+        el.style.transitionDelay = `${index * 1}ms`; // Stagger animation
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
