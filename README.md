@@ -1,85 +1,213 @@
-# NextNets  
-<span style="color:#2563eb;font-weight:bold;">Laravel • PHP • MVC</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextNets – Laravel Project</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.7;
+            background-color: #f9fafb;
+            color: #1f2937;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 40px 20px;
+            background: #ffffff;
+        }
+        h1, h2, h3 {
+            color: #111827;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+        h2 {
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+        code, pre {
+            background: #111827;
+            color: #e5e7eb;
+            padding: 12px;
+            border-radius: 6px;
+            display: block;
+            overflow-x: auto;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .badge {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+        .highlight {
+            background: #eff6ff;
+            padding: 15px;
+            border-left: 4px solid #2563eb;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        .screenshots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        .screenshots img {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .screenshots p {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-top: 8px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
 
-<p>
-<strong>NextNets</strong> is a <strong>Laravel-based web application</strong> for 
-<strong>Study Abroad & International Education Services</strong>.  
-It helps students explore study destinations, English proficiency tests, 
-university pathways, visa guidance, and success stories.
-</p>
+<div class="container">
 
----
+    <h1>🚀 NextNets</h1>
+    <p><strong>Study Abroad & Visa Consulting Platform (Laravel)</strong></p>
 
-## 🚀 Live Demo
+    <span class="badge">Laravel</span>
+    <span class="badge">PHP</span>
+    <span class="badge">MySQL</span>
+    <span class="badge">MVC</span>
 
-🔗 <strong>Website:</strong>  
-<a href="https://sefat-khan.github.io/nextnets/" target="_blank">
-https://sefat-khan.github.io/nextnets/
-</a>
+    <p>
+        <strong>NextNets</strong> is a modern web application built with 
+        <strong>Laravel</strong>, designed for education consultancies offering 
+        <strong>study abroad guidance</strong>, <strong>visa assistance</strong>, 
+        and <strong>student support services</strong>.
+    </p>
 
-📦 <strong>Repository:</strong>  
-<a href="https://github.com/Sefat-Khan/nextnets.git" target="_blank">
-https://github.com/Sefat-Khan/nextnets.git
-</a>
+    <div class="highlight">
+        This project follows Laravel best practices and provides a clean, scalable
+        foundation for real-world production systems.
+    </div>
 
----
+    <h2>📸 Project Screenshots</h2>
+    <p>
+        Below are sample screenshots of the NextNets platform.  
+        Replace the image files with your own project screenshots.
+    </p>
 
-## 📌 Features
+    <div class="screenshots">
+        <div>
+            <img src="screenshots/homepage.png" alt="NextNets Homepage">
+            <p>Homepage</p>
+        </div>
+        <div>
+            <img src="screenshots/study-programs.png" alt="Study Programs Page">
+            <p>Study Programs</p>
+        </div>
+        <div>
+            <img src="screenshots/contact.png" alt="Contact Page">
+            <p>Contact Page</p>
+        </div>
+    </div>
 
-<ul>
-  <li>Study destination information (UK, USA, Canada, etc.)</li>
-  <li>English test guidance (IELTS, TOEFL, Duolingo)</li>
-  <li>University pathway & campus details</li>
-  <li>Visa success & student success stories</li>
-  <li>Laravel MVC architecture</li>
-  <li>Blade templating with reusable layouts</li>
-  <li>Scalable and maintainable project structure</li>
-</ul>
+    <h2>✨ Key Features</h2>
+    <ul>
+        <li><strong>Laravel MVC Architecture</strong> – clean separation of logic and views</li>
+        <li><strong>Study Abroad Platform</strong> – programs, campuses, and destinations</li>
+        <li><strong>Visa Success Stories</strong> – real outcomes and guidance</li>
+        <li><strong>English Test Information</strong> – IELTS and proficiency guidance</li>
+        <li><strong>Responsive Design</strong> – mobile, tablet, and desktop friendly</li>
+        <li><strong>Secure Configuration</strong> – environment-based settings</li>
+    </ul>
 
----
+    <h2>🛠️ Tech Stack</h2>
+    <ul>
+        <li><strong>Backend:</strong> Laravel (PHP)</li>
+        <li><strong>Frontend:</strong> Blade Templates, HTML5, CSS3</li>
+        <li><strong>Database:</strong> MySQL (configurable)</li>
+        <li><strong>Tooling:</strong> Composer, Artisan CLI</li>
+    </ul>
 
-## 🗂️ Project Structure
-
-```text
+    <h2>📂 Project Structure</h2>
+    <pre>
 nextnets/
 ├── app/
-├── bootstrap/
-├── config/
-├── database/
-├── public/
+├── routes/
 ├── resources/
 │   ├── views/
-│   ├── css/
-│   └── js/
-├── routes/
-│   └── web.php
-├── storage/
-├── tests/
+│   └── assets/
+├── public/
+├── database/
+├── screenshots/
+│   ├── homepage.png
+│   ├── study-programs.png
+│   └── contact.png
 ├── .env.example
-├── composer.json
-├── artisan
-└── README.md
-🛠️ Tech Stack
-<table> <tr> <th>Technology</th> <th>Usage</th> </tr> <tr> <td>Laravel</td> <td>Backend framework</td> </tr> <tr> <td>PHP</td> <td>Server-side logic</td> </tr> <tr> <td>Blade</td> <td>Templating engine</td> </tr> <tr> <td>MySQL</td> <td>Database</td> </tr> <tr> <td>HTML, CSS, JavaScript</td> <td>Frontend</td> </tr> </table>
-⚙️ Installation & Setup
+└── composer.json
+    </pre>
+
+    <h2>⚙️ Installation & Setup</h2>
+
+    <pre>
 git clone https://github.com/Sefat-Khan/nextnets.git
 cd nextnets
 composer install
 cp .env.example .env
 php artisan key:generate
 php artisan serve
-Open in browser:
-👉 http://127.0.0.1:8000
+    </pre>
 
-🖼️ Screenshots
-Create a folder named screenshots/ in the root directory
-Add your website screenshots and update filenames if needed.
+    <h2>🎯 Use Cases</h2>
+    <ul>
+        <li>Education consultancy websites</li>
+        <li>Study abroad & immigration agencies</li>
+        <li>Laravel portfolio project</li>
+        <li>Base for SaaS or CRM platforms</li>
+    </ul>
 
-<p align="center"> <img src="screenshots/home.png" width="45%" alt="Home Page"> <img src="screenshots/study-destination.png" width="45%" alt="Study Destination"> </p> <p align="center"> <img src="screenshots/english-test.png" width="45%" alt="English Test"> <img src="screenshots/contact.png" width="45%" alt="Contact Page"> </p>
-📈 Future Improvements
-<ul> <li>Admin dashboard</li> <li>Authentication system</li> <li>Student application tracking</li> <li>Dynamic CMS features</li> <li>SEO optimization</li> </ul>
-👤 Author
-<strong>Sefat Khan</strong>
-Laravel & Web Developer
+    <h2>📈 Future Enhancements</h2>
+    <ul>
+        <li>User authentication & admin dashboard</li>
+        <li>Online application system</li>
+        <li>Email notifications</li>
+        <li>Content Management System (CMS)</li>
+        <li>REST API integration</li>
+    </ul>
 
-<p align="center"> <sub>© 2026 NextNets • Built with Laravel</sub> </p> ```
+    <h2>📄 License</h2>
+    <p>
+        This project is open-source and available under the <strong>MIT License</strong>.
+    </p>
+
+    <h2>⭐ Support</h2>
+    <p>
+        If you find this project useful, please consider giving it a ⭐ on GitHub.
+    </p>
+
+    <div class="footer">
+        © 2026 NextNets — Built with Laravel ❤️
+    </div>
+
+</div>
+
+</body>
+</html>
