@@ -15,7 +15,7 @@ It provides study abroad guidance, visa assistance, and student support services
 
 <h2>🌐 Live Site</h2>
 <p>
-<a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a>
+<a href="https://sefat-khan.github.io/nextnets/" target="_blank">http://127.0.0.1:8000</a>
 </p>
 
 <h2>🚀 Tech Stack</h2>
