@@ -3,86 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextNets – Laravel Project</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.7;
-            background-color: #f9fafb;
-            color: #1f2937;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
-            background: #ffffff;
-        }
-        h1, h2, h3 {
-            color: #111827;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-        h2 {
-            border-bottom: 2px solid #e5e7eb;
-            padding-bottom: 5px;
-            margin-top: 40px;
-        }
-        code, pre {
-            background: #111827;
-            color: #e5e7eb;
-            padding: 12px;
-            border-radius: 6px;
-            display: block;
-            overflow-x: auto;
-        }
-        ul {
-            margin-left: 20px;
-        }
-        .badge {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-right: 8px;
-        }
-        .highlight {
-            background: #eff6ff;
-            padding: 15px;
-            border-left: 4px solid #2563eb;
-            border-radius: 6px;
-            margin-top: 20px;
-        }
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 20px;
-            margin-top: 25px;
-        }
-        .screenshots img {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid #e5e7eb;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-        }
-        .screenshots p {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #6b7280;
-            margin-top: 8px;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #6b7280;
-            font-size: 0.9rem;
-        }
-    </style>
+    
+    
 </head>
 <body>
 
