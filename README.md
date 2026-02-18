@@ -3,68 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NextNets - Laravel Project</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            background-color: #f9fafb;
-            color: #111827;
-            margin: 0;
-            padding: 20px;
-        }
-        h1, h2, h3 {
-            color: #1f2937;
-        }
-        code, pre {
-            background: #111827;
-            color: #f9fafb;
-            padding: 12px;
-            display: block;
-            border-radius: 6px;
-            overflow-x: auto;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-        }
-        .badge {
-            display: inline-block;
-            background: #2563eb;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-right: 6px;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        .screenshots img {
-            width: 100%;
-            border-radius: 6px;
-            border: 1px solid #e5e7eb;
-        }
-        footer {
-            margin-top: 40px;
-            font-size: 14px;
-            color: #6b7280;
-            text-align: center;
-        }
-        a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-    </style>
+    
+    
 </head>
 <body>
 
