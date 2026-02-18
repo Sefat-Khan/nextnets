@@ -1,135 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-<div class="container">
+<h1>NextNets — Study Abroad Platform</h1>
 
-    <h1>🚀 NextNets</h1>
-    <p><strong>Study Abroad & Visa Consulting Platform (Laravel)</strong></p>
+<p>
+NextNets is a modern Laravel web application designed for education consultancies. 
+It provides study abroad guidance, visa assistance, and student support services.
+</p>
 
-    <span class="badge">Laravel</span>
-    <span class="badge">PHP</span>
-    <span class="badge">MySQL</span>
-    <span class="badge">MVC</span>
+<h2>🌐 Live Site</h2>
+<p>
+<a href="http://127.0.0.1:8000" target="_blank">http://127.0.0.1:8000</a>
+</p>
 
-    <p>
-        <strong>NextNets</strong> is a modern web application built with 
-        <strong>Laravel</strong>, designed for education consultancies offering 
-        <strong>study abroad guidance</strong>, <strong>visa assistance</strong>, 
-        and <strong>student support services</strong>.
-    </p>
+<h2>🚀 Tech Stack</h2>
+<h3>Backend</h3>
+<ul>
+<li>Laravel</li>
+<li>PHP</li>
+<li>MySQL / PostgreSQL</li>
+</ul>
 
-    <div class="highlight">
-        This project follows Laravel best practices and provides a clean, scalable
-        foundation for real-world production systems.
-    </div>
+<h3>Frontend</h3>
+<ul>
+<li>Blade Templates</li>
+<li>HTML5 / CSS3</li>
+<li>Optional JS Components</li>
+</ul>
 
-    <h2>📸 Project Screenshots</h2>
-    <p>
-        Below are sample screenshots of the NextNets platform.  
-        Replace the image files with your own project screenshots.
-    </p>
+<h2>✨ Features</h2>
+<ul>
+<li>Study program pages</li>
+<li>Campus information</li>
+<li>Visa success stories</li>
+<li>Contact & inquiry management</li>
+<li>Responsive UI</li>
+</ul>
 
-    <div class="screenshots">
-        <div>
-            <img src="screenshots/homepage.png" alt="NextNets Homepage">
-            <p>Homepage</p>
-        </div>
-        <div>
-            <img src="screenshots/study-programs.png" alt="Study Programs Page">
-            <p>Study Programs</p>
-        </div>
-        <div>
-            <img src="screenshots/contact.png" alt="Contact Page">
-            <p>Contact Page</p>
-        </div>
-    </div>
+<h2>📸 Screenshots</h2>
+<p>Add your project screenshots below:</p>
+<img src="screenshots/homepage.png" alt="Homepage" width="400">
+<img src="screenshots/study-programs.png" alt="Study Programs" width="400">
+<img src="screenshots/contact.png" alt="Contact Page" width="400">
 
-    <h2>✨ Key Features</h2>
-    <ul>
-        <li><strong>Laravel MVC Architecture</strong> – clean separation of logic and views</li>
-        <li><strong>Study Abroad Platform</strong> – programs, campuses, and destinations</li>
-        <li><strong>Visa Success Stories</strong> – real outcomes and guidance</li>
-        <li><strong>English Test Information</strong> – IELTS and proficiency guidance</li>
-        <li><strong>Responsive Design</strong> – mobile, tablet, and desktop friendly</li>
-        <li><strong>Secure Configuration</strong> – environment-based settings</li>
-    </ul>
-
-    <h2>🛠️ Tech Stack</h2>
-    <ul>
-        <li><strong>Backend:</strong> Laravel (PHP)</li>
-        <li><strong>Frontend:</strong> Blade Templates, HTML5, CSS3</li>
-        <li><strong>Database:</strong> MySQL (configurable)</li>
-        <li><strong>Tooling:</strong> Composer, Artisan CLI</li>
-    </ul>
-
-    <h2>📂 Project Structure</h2>
-    <pre>
-nextnets/
-├── app/
-├── routes/
-├── resources/
-│   ├── views/
-│   └── assets/
-├── public/
-├── database/
-├── screenshots/
-│   ├── homepage.png
-│   ├── study-programs.png
-│   └── contact.png
-├── .env.example
-└── composer.json
-    </pre>
-
-    <h2>⚙️ Installation & Setup</h2>
-
-    <pre>
-git clone https://github.com/Sefat-Khan/nextnets.git
+<h2>📦 Installation</h2>
+<pre><code>git clone https://github.com/Sefat-Khan/nextnets.git
 cd nextnets
 composer install
 cp .env.example .env
 php artisan key:generate
+php artisan migrate
 php artisan serve
-    </pre>
+</code></pre>
 
-    <h2>🎯 Use Cases</h2>
-    <ul>
-        <li>Education consultancy websites</li>
-        <li>Study abroad & immigration agencies</li>
-        <li>Laravel portfolio project</li>
-        <li>Base for SaaS or CRM platforms</li>
-    </ul>
+<h2>🗂 Project Structure</h2>
+<pre><code>app/
+routes/
+resources/
+   ├── views/
+   └── assets/
+public/
+database/
+screenshots/
+.env.example
+composer.json
+</code></pre>
 
-    <h2>📈 Future Enhancements</h2>
-    <ul>
-        <li>User authentication & admin dashboard</li>
-        <li>Online application system</li>
-        <li>Email notifications</li>
-        <li>Content Management System (CMS)</li>
-        <li>REST API integration</li>
-    </ul>
+<h2>🔐 Authentication</h2>
+<ul>
+<li>User registration & login</li>
+<li>Profile management</li>
+<li>Order / Inquiry handling</li>
+</ul>
 
-    <h2>📄 License</h2>
-    <p>
-        This project is open-source and available under the <strong>MIT License</strong>.
-    </p>
+<h2>🤝 Contributing</h2>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+<li>Commit changes</li>
+<li>Open a Pull Request</li>
+</ol>
 
-    <h2>⭐ Support</h2>
-    <p>
-        If you find this project useful, please consider giving it a ⭐ on GitHub.
-    </p>
-
-    <div class="footer">
-        © 2026 NextNets — Built with Laravel ❤️
-    </div>
-
-</div>
+<h2>📄 License</h2>
+<p>MIT License</p>
 
 </body>
 </html>
